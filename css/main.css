@@ -1,0 +1,19 @@
+.z1 {
+  z-index: 1;
+}
+.chatbox1 p {
+  background: #f1f1f1;
+  color: #000;
+  border-radius: 20px 20px 20px 3px;
+  display: block;
+  max-width: 75%;
+  padding: 7px 13px 7px 13px;
+}
+.chatbox2 p {
+  background: #42a5f5;
+  color: #fff !important;
+  border-radius: 20px 20px 3px 20px;
+  display: block;
+  max-width: 75%;
+  padding: 7px 13px 7px 13px;
+}
