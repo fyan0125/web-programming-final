@@ -4,8 +4,25 @@ body {
   background: #f2d985;
 }
 
+header {
+  height: 50px;
+  width: 100%;
+  background: rgba(242, 217, 133, 0.8);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+footer {
+  font-size: 12px;
+  color: white;
+  height: 30px;
+  margin-top: -30px;
+}
+
 h1 {
   color: white;
+  cursor: default;
 }
 
 a {
@@ -19,6 +36,10 @@ a:hover {
 
 .z1 {
   z-index: 1;
+}
+
+.z--1 {
+  z-index: -1;
 }
 
 .front-page {
@@ -40,6 +61,7 @@ a:hover {
   display: block;
   max-width: 75%;
   padding: 7px 13px 7px 13px;
+  white-space: pre-line;
 }
 
 .input-box {
@@ -78,7 +100,6 @@ a:hover {
   bottom: 100px;
   height: 100vh;
   overflow: hidden;
-  z-index: -1;
   display: flex;
 }
 
@@ -87,11 +108,13 @@ a:hover {
   left: 0;
   right: 0;
   bottom: 0px;
-  margin-bottom: -390px;
+  margin-bottom: -620px;
 }
 
-.dialogue1,
-.dialogue2,
-.dialogue3 {
+.message {
   width: 70%;
+}
+
+.q6 {
+  white-space: pre-line;
 }

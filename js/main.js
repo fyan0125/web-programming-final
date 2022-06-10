@@ -1,9 +1,12 @@
 const severURL =
-  "https://script.google.com/macros/s/AKfycbwGHyvqIJhjonI8SyynfRQVS6OmIWno-qkseHkfTXr-Pl1BG0IL6yIuKpwdtxi26UfvPQ/exec";
+  "https://script.google.com/macros/s/AKfycbzsjK30kvYQWPfl-JkU4ZMy-vABUd2t61dVVnpVx7h70vH3167uQmMTEMujKNzwFZYw-g/exec";
+let dialogueNum = 1;
+var yStatus = 0;
 let type = "";
 let staple = "";
+let stapleCa = "";
 let side = "";
-var yStatus = 0;
+let sideCa = "";
 
 $(document).ready(function () {
   initBtn();
@@ -11,13 +14,15 @@ $(document).ready(function () {
 });
 
 function initBtn() {
-  // $(".upload-button").click(function (event) {
-  //   sendToServer();
-  // });
+  $(".upload-button").click(function (event) {
+    sendToServer();
+  });
   $(".start-button").click(function (event) {
-    gsap.to(".front-page", { y: -400, duration: 0.3 });
+    gsap
+      .to(".front-page", { y: -550, duration: 0.3 })
+      .then($(".dialogue-container").removeClass("z--1"));
     gsap.to(".input-box", { y: -200, duration: 0.3 });
-    yStatus = -180;
+    yStatus = -120;
     gsap.to(".dialogue", { y: yStatus, duration: 0.3 });
   });
 }
@@ -25,24 +30,49 @@ function initBtn() {
 function inputListen() {
   const selectElement = document.querySelector(".form-control");
   selectElement.addEventListener("change", (event) => {
-    if (type == "") {
-      const result = document.querySelector(".a1");
-      type = event.target.value;
-      result.textContent = type;
+    if (event.target.value != "") {
+      switch (dialogueNum) {
+        case 1:
+          type = event.target.value;
+          document.querySelector(".a1").textContent = type;
+          break;
+        case 2:
+          staple = event.target.value;
+          document.querySelector(".a2").textContent = staple;
+          document.querySelector(
+            ".q3"
+          ).textContent = `${staple}的卡路里是多少呢？`;
+          break;
+        case 3:
+          stapleCa = event.target.value;
+          document.querySelector(".a3").textContent = stapleCa;
+          break;
+        case 4:
+          side = event.target.value;
+          document.querySelector(".a4").textContent = side;
+          document.querySelector(
+            ".q5"
+          ).textContent = `${side}的卡路里是多少呢？`;
+          break;
+        case 5:
+          sideCa = event.target.value;
+          document.querySelector(".a5").textContent = sideCa;
+          document.querySelector(".q6").textContent = `關於這次的紀錄：
+          你吃了${staple}
+          卡路里是${stapleCa}kcal
+          還吃了${side}
+          卡路里是${sideCa}kcal
+          確認無誤請點擊上傳
+          有誤請點擊重新回答`;
+          break;
+      }
+      if (dialogueNum == 5) {
+        yStatus -= 160;
+      } else {
+        yStatus -= 100;
+      }
+      dialogueNum++;
       $(".form-control").val("");
-      yStatus -= 99;
-    } else if (staple == "" && type != "") {
-      const result = document.querySelector(".a2");
-      staple = event.target.value;
-      result.textContent = staple;
-      $(".form-control").val("");
-      yStatus -= 99;
-    } else if (side == "" && staple != "") {
-      const result = document.querySelector(".a3");
-      side = event.target.value;
-      result.textContent = side;
-      $(".form-control").val("");
-      yStatus -= 38;
     }
     gsap.to(".dialogue", { y: yStatus, duration: 0.3 });
   });
@@ -53,6 +83,9 @@ function sendToServer() {
     method: "write",
     type: type,
     staple: staple,
+    stapleCa: stapleCa,
+    side: side,
+    sideCa: sideCa,
   };
   $.post(severURL, parameter, function (data) {
     console.log(data);
