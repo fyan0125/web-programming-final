@@ -2,7 +2,13 @@
 
 1. 點擊 “點此進入”，可以透過對話方式紀錄飲食資訊。
 2. 點擊 “查看歷史紀錄”，可以透過選擇日期，篩選每天所紀錄的餐點。
-   > 目前有資料的只有 2022/06/08~2022/06/10
+
+   > 目前有資料的只有 2022/06/08~2022/06/11
+
+## 資料庫
+
+google 試算表
+https://docs.google.com/spreadsheets/d/1rNz0urO33rJGuNGoHwaREA-r1hEyIXcwWcyrkd1bWvI/edit?usp=sharing
 
 ## 設計發想
 
@@ -10,7 +16,8 @@
 (參考圖片)
 <br/>
 
-## Demo 
+## Demo
+
 [![IMAGE ALT TEXT](http://img.youtube.com/vi/l-E3O5VpJQQ/0.jpg)](https://www.youtube.com/watch?v=l-E3O5VpJQQ "飲食紀錄 ")
 
 ## 未來規劃
