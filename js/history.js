@@ -1,27 +1,32 @@
 const serverUrl =
   "https://script.google.com/macros/s/AKfycbyi3KijHcRiUoiDlRhucTIKTUrm_oM8N8AsO_BMNePRVHwZxP4dtJg173uLlT4gNGLQlQ/exec";
-let mealData;
+let mealData = [];
 
 $(document).ready(function () {
   getData();
+  initBtn();
   inputListen();
 });
 
-function inputListen() {
-  const selectElement = document.querySelector("[name=datePicker]");
-  selectElement.addEventListener("change", (event) => {
-    for (let i = 0; i < mealData.length; i++) {
-      let firstSplit = mealData[i].date.split("-");
-      let secondSplit = firstSplit[2].split("T");
-      let date = `${firstSplit[0]}-${firstSplit[1]}-${secondSplit[0]}`;
-      if (date == $("[name=datePicker]").val()) {
-        let content = template(mealData[i]);
-        $(".mealList").append(content);
-      } else {
-        $(".mealList").html("");
-      }
-    }
+function initBtn() {
+  $(".confirm-button").click(function (event) {
+    $(".mealList").html("");
+    $(".message").show();
+    inputListen();
   });
+}
+
+function inputListen() {
+  for (let i = 0; i < mealData.length; i++) {
+    let firstSplit = mealData[i].date.split("-");
+    let secondSplit = firstSplit[2].split("T");
+    let date = `${firstSplit[0]}-${firstSplit[1]}-${secondSplit[0]}`;
+    if (date == $("[name=datePicker]").val()) {
+      let content = template(mealData[i]);
+      $(".mealList").append(content);
+      $(".message").hide();
+    }
+  }
 }
 
 function getData() {
@@ -31,6 +36,7 @@ function getData() {
   $.post(serverUrl, parameter, function (data) {
     if (data.result == "sus") {
       mealData = data.data;
+      console.log(mealData);
     }
   }).fail(function (e) {
     console.log(e);

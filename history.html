@@ -16,12 +16,18 @@
   </head>
   <body>
     <header class="z1 d-flex align-items-center justify-content-center">
-      <a href="index.html">首頁</a>
+      <a href="index.html"><h4>首頁</h4></a>
     </header>
     <nav class="d-flex align-items-center justify-content-center">
       <input type="date" name="datePicker" value="" />
+      <button class="btn rounded-pill confirm-button ms-2" type="button">
+        確定
+      </button>
     </nav>
     <section>
+      <div class="w-100 message position-absolute">
+        <p class="text-white text-center mt-3">請選擇其他日期</p>
+      </div>
       <div class="mealList"></div>
     </section>
     <footer>
@@ -37,6 +43,7 @@
       src="https://kit.fontawesome.com/de79173899.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
     <script src="./js/history.js"></script>
   </body>
 </html>

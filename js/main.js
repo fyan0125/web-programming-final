@@ -87,10 +87,26 @@ function sendToServer() {
     side: side,
     sideCa: sideCa,
   };
+
+  document
+    .getElementById("cover")
+    .style.setProperty("display", "grid", "important");
   $.post(severURL, parameter, function (data) {
     console.log(data);
     if (data.result == "sus") {
+      document
+        .getElementById("cover")
+        .style.setProperty("display", "none", "important");
+      gsap.to(".dialogue", { y: -1500, duration: 0.3 });
+      document
+        .getElementById("finish")
+        .style.setProperty("display", "inline-flex", "important");
+      gsap.to(".finish", { y: -$(window).height() / 2 - 40, duration: 0.3 });
     } else {
+      document
+        .getElementById("cover")
+        .style.setProperty("display", "none", "important");
+      alert("送出失敗");
     }
   }).fail(function (data) {
     alert("送出失敗");
