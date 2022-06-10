@@ -1,7 +1,7 @@
 const severURL =
-  "https://script.google.com/macros/s/AKfycbzsjK30kvYQWPfl-JkU4ZMy-vABUd2t61dVVnpVx7h70vH3167uQmMTEMujKNzwFZYw-g/exec";
+  "https://script.google.com/macros/s/AKfycbyi3KijHcRiUoiDlRhucTIKTUrm_oM8N8AsO_BMNePRVHwZxP4dtJg173uLlT4gNGLQlQ/exec";
 let dialogueNum = 1;
-var yStatus = 0;
+let yStatus = 0;
 let type = "";
 let staple = "";
 let stapleCa = "";
@@ -16,6 +16,9 @@ $(document).ready(function () {
 function initBtn() {
   $(".upload-button").click(function (event) {
     sendToServer();
+  });
+  $(".refresh-button").click(function (event) {
+    window.location.reload();
   });
   $(".start-button").click(function (event) {
     gsap
@@ -64,13 +67,10 @@ function inputListen() {
           卡路里是${sideCa}kcal
           確認無誤請點擊上傳
           有誤請點擊重新回答`;
+          gsap.to(".input-box", { y: 0, duration: 0.3 });
           break;
       }
-      if (dialogueNum == 5) {
-        yStatus -= 160;
-      } else {
-        yStatus -= 100;
-      }
+      yStatus -= 100;
       dialogueNum++;
       $(".form-control").val("");
     }
