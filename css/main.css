@@ -1,6 +1,30 @@
+body {
+  margin: 0;
+  height: 100%;
+  background: #f2d985;
+}
+
+h1 {
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover {
+  color: #bd674e;
+}
+
 .z1 {
   z-index: 1;
 }
+
+.front-page {
+  height: 100vh;
+}
+
 .chatbox1 p {
   background: #f1f1f1;
   color: #000;
@@ -10,10 +34,64 @@
   padding: 7px 13px 7px 13px;
 }
 .chatbox2 p {
-  background: #42a5f5;
-  color: #fff !important;
+  background: #765242;
+  color: #fff;
   border-radius: 20px 20px 3px 20px;
   display: block;
   max-width: 75%;
   padding: 7px 13px 7px 13px;
+}
+
+.input-box {
+  margin-bottom: -100px;
+}
+
+.input-group {
+  width: 70%;
+}
+
+.form-control {
+  background: #eaeaea;
+  border-width: 0;
+  margin-right: 10px;
+}
+
+.form-control:focus {
+  background: #eaeaea;
+  border-width: 0;
+  box-shadow: 0 0 0 0;
+}
+
+.btn {
+  background: #765242;
+  color: white;
+}
+
+.btn:focus {
+  box-shadow: 0 0 0 0;
+}
+
+.dialogue-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100px;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -1;
+  display: flex;
+}
+
+.dialogue {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0px;
+  margin-bottom: -390px;
+}
+
+.dialogue1,
+.dialogue2,
+.dialogue3 {
+  width: 70%;
 }

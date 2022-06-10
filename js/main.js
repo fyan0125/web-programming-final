@@ -3,20 +3,22 @@ const severURL =
 let type = "";
 let staple = "";
 let side = "";
+var yStatus = 0;
 
 $(document).ready(function () {
   initBtn();
   inputListen();
-  $(".a1").hide();
-  $(".q2").hide();
-  $(".a2").hide();
-  $(".q3").hide();
-  $(".a3").hide();
 });
 
 function initBtn() {
-  $(".upload-button").click(function (event) {
-    sendToServer();
+  // $(".upload-button").click(function (event) {
+  //   sendToServer();
+  // });
+  $(".start-button").click(function (event) {
+    gsap.to(".front-page", { y: -400, duration: 0.3 });
+    gsap.to(".input-box", { y: -200, duration: 0.3 });
+    yStatus = -180;
+    gsap.to(".dialogue", { y: yStatus, duration: 0.3 });
   });
 }
 
@@ -24,27 +26,25 @@ function inputListen() {
   const selectElement = document.querySelector(".form-control");
   selectElement.addEventListener("change", (event) => {
     if (type == "") {
-      $(".a1").show();
-      $(".q2").show();
       const result = document.querySelector(".a1");
       type = event.target.value;
       result.textContent = type;
       $(".form-control").val("");
+      yStatus -= 99;
     } else if (staple == "" && type != "") {
-      $(".a2").show();
-      $(".q3").show();
       const result = document.querySelector(".a2");
       staple = event.target.value;
       result.textContent = staple;
       $(".form-control").val("");
+      yStatus -= 99;
     } else if (side == "" && staple != "") {
-      $(".a3").show();
-      $(".q4").show();
       const result = document.querySelector(".a3");
       side = event.target.value;
       result.textContent = side;
       $(".form-control").val("");
+      yStatus -= 38;
     }
+    gsap.to(".dialogue", { y: yStatus, duration: 0.3 });
   });
 }
 
