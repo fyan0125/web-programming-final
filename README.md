@@ -10,6 +10,9 @@
 (參考圖片)
 <br/>
 
+## Demo 
+[![IMAGE ALT TEXT](http://img.youtube.com/vi/l-E3O5VpJQQ/0.jpg)](https://www.youtube.com/watch?v=l-E3O5VpJQQ "飲食紀錄 ")
+
 ## 未來規劃
 
 1. 因為目前是採取固定的對話框數量，透過動畫將其上移，未來希望能由使用者決定對話框數量。
